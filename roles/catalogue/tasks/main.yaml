@@ -20,9 +20,9 @@
     state: present
 
 - name: setting "{{ component }}".service
-  ansible.builtin.template:
-    src: catalogue.service.j2
-    dest: /etc/systemd/system/catalogue.service
+  ansible.builtin.include.role:
+    name: common
+    tasks_from: app-code-download.yaml
 
 - name: Daemon_reload & service restart
   include_role: 
