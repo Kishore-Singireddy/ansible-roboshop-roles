@@ -4,6 +4,6 @@
 
 - name: Start & Enable service
   ansible.buitlin.service:
-    name: "{{ component }}
-    state: restarted
-    enabled: yes
+    name: "{{ component }}"
+    state: started
+    enabled: true
