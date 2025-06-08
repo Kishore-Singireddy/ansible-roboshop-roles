@@ -29,6 +29,11 @@
     name: common
     tasks_from: daemon_reload
 
+- name: Copy mongodb client repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
 - name: Install mongodb client
   ansible.builtin.dnf:
     name: mongodb-mongosh
