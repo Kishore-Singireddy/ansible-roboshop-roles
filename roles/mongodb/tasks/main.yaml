@@ -11,7 +11,7 @@
 - name: Service restart
   ansible.builtin.service:
     name: mongod
-    state: restart
+    state: restarted
     enabled: yes
 
 - name: enable remote connections
