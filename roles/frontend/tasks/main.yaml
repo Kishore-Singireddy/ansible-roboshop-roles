@@ -35,11 +35,6 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
-- name: download the contents
-  ansible.builtin.include_role:
-    name: common
-    tasks_from: app-code-download.yaml
-
 - name: service restart
   ansible.builtin.service:
     name: nginx
