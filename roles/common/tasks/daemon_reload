@@ -3,7 +3,7 @@
     daemon_reload: true
 
 - name: Start & Enable service
-  ansible.buitlin.service:
+  ansible.builtin.service:
     name: "{{ component }}"
     state: started
     enabled: true
