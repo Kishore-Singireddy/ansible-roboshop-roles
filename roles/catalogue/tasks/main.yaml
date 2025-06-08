@@ -48,8 +48,8 @@
     msg: "{{ catalogue_output }}"
 
 - name: Load Product informaiton if there is no data
-  ansible.builtin.shell: mongosh --host mongodb.singireddy.shop </app/db/master-data.js
-  when: catatalogue_output.stdout | int < 0
+  ansible.builtin.shell: mongosh --host mongodb.singireddy.shop < /app/db/master-data.js
+  when: catalogue_output.stdout | int < 0
 
     
       
