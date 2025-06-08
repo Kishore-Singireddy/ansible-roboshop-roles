@@ -29,6 +29,11 @@
     url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
     dest: /tmp/frontend.zip
 
+- name: copy the nginx conf
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx.nginx.conf
+
 - name: extract the frondend code
   ansible.builtin.unarchive:
     src: /tmp/frontend.zip
