@@ -9,7 +9,3 @@
   ansible.builtin.file:
     path: /app
     state: directory
-
-
-
-  
