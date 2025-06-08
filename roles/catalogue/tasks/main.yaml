@@ -1,14 +1,17 @@
 - name: nodejs installation
-  include_roles: common
-  tasks_from: nodejs.yaml
+  include_role: 
+    name: common
+    tasks_from: nodejs.yaml
 
 - name: Create system user
-  include_roles: common
-  tasks_from: system_user.yaml
+  include_role:
+    name: common
+    tasks_from: system_user.yaml
   
 - name: download application code
-  include_roles: common
-  tasks_from: app-code-download.yaml
+  include_role:
+    name: common
+    tasks_from: app-code-download.yaml
 
 - name: download dependencies npm
   community.general.npm:
@@ -22,8 +25,9 @@
     dest: etc/systemd/system/catalogue.service
 
 - name: Daemon_reload & service restart
-  include_roles: common
-  tasks_from: daemon_reload
+  include_role: 
+    name: common
+    tasks_from: daemon_reload
 
 - name: Install mongodb client
   ansible.builtin.dnf:
