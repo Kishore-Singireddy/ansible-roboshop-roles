@@ -6,7 +6,6 @@ CART: cart.singireddy.shop
 
 FRONTEND: frontend.singireddy.shop
 
-MONGODB:  mongodb.singireddy.shop
 
 MYSQL:  mysql.singireddy.shop
 
@@ -20,4 +19,3 @@ REDIS:  redis.singireddy.shop
 
 SHIPPING:  shipping.singireddy.shop
 
-USER:  user.singireddy.shop
