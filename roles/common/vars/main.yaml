@@ -1,8 +1,8 @@
-MONGODB: mongodb.singieddy.shop
+MONGODB: mongodb.singireddy.shop
+
+CATLOGUE: catalogue.singireddy.shop
 
 CART: cart.singireddy.shop
-
-CATALOGUE: catalogue.singireddy.shop
 
 FRONTEND: frontend.singireddy.shop
 
