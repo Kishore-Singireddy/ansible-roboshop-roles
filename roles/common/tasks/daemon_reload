@@ -6,4 +6,4 @@
   ansible.buitlin.service:
     name: "{{ component }}
     state: started
-    enabled: true
+    enabled: yes
