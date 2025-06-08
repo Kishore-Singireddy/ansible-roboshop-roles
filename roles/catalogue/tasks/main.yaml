@@ -40,6 +40,8 @@
     state: present
 
 - name: check products loaded or not
+  tags:
+  - load_data
   ansible.builtin.command: mongosh --host mongodb.singireddy.shop --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
   register: catalogue_output
 
