@@ -10,8 +10,6 @@ MONGODB:  mongodb.singireddy.shop
 
 MYSQL:  mysql.singireddy.shop
 
-USER:  user.singireddy.shop
-
 PAYMENT:  payment.singireddy.shop
 
 RABBITMQ:  rabbitmq.singireddy.shop
