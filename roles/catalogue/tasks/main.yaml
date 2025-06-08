@@ -1,50 +1,46 @@
-- name: Confguring "{{ component }}"
-  become: yes
-  hosts: "{{ component }}"
-  roles:
-  - name: nodejs installation
-    include_roles: common
-    tasks_from: nodejs.yaml
+- name: nodejs installation
+  include_roles: common
+  tasks_from: nodejs.yaml
 
-  - name: Create system user
-    include_roles: common
-    tasks_from: system_user.yaml
-    
-  - name: download application code
-    include_role: common
-    tasks_from: app-code-download.yaml
+- name: Create system user
+  include_roles: common
+  tasks_from: system_user.yaml
   
-  - name: download dependencies npm
-    community.general.npm:
-      name: npm
-      path: /app
-      state: present
-  
-  - name: setting "{{ component }}".service
-    ansible.builtin.template:
-      src: catalogue.service.j2
-      dest: etc/systemd/system/catalogue.service
+- name: download application code
+  include_roles: common
+  tasks_from: app-code-download.yaml
 
-  - name: Daemon_reload & service restart
-    include_role: common
-    tasks_from: daemon_reload
+- name: download dependencies npm
+  community.general.npm:
+    name: npm
+    path: /app
+    state: present
 
-  - name: Install mongodb client
-    ansible.builtin.dnf:
-      name: mongodb-mongosh
-      state: present
+- name: setting "{{ component }}".service
+  ansible.builtin.template:
+    src: catalogue.service.j2
+    dest: etc/systemd/system/catalogue.service
 
-  - name: check products loaded or not
-    ansible.builtin.command: mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
-    register: catalogue_output
+- name: Daemon_reload & service restart
+  include_roles: common
+  tasks_from: daemon_reload
 
-  - name: Display the data present in mongodb
-    ansible.builtin.debug:
-      msg: "{{ catalogue_output }}"
+- name: Install mongodb client
+  ansible.builtin.dnf:
+    name: mongodb-mongosh
+    state: present
 
-  - name: Load Product informaiton if there is no data
-    ansible.builtin.command: mongosh --host mongodb.singireddy.shop </app/db/master-data.js
-    when: catatalogue_output.stdout | int < 0
+- name: check products loaded or not
+  ansible.builtin.command: mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+  register: catalogue_output
+
+- name: Display the data present in mongodb
+  ansible.builtin.debug:
+    msg: "{{ catalogue_output }}"
+
+- name: Load Product informaiton if there is no data
+  ansible.builtin.command: mongosh --host mongodb.singireddy.shop </app/db/master-data.js
+  when: catatalogue_output.stdout | int < 0
 
     
       
